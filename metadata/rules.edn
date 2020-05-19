@@ -1,0 +1,51 @@
+{:insurances {:starts {:IN1 {}}
+              :consumes {:IN2 {} :IN3 {}}}
+
+ :message {:starts {:MSH {}}
+           :consumes {:EVN {}
+                      :SFT {}}}
+ :allergies {:starts {:AL1 {}}}
+ :diagnosis {:starts {:DG1 {}}}
+ :patient {:starts {:PID {}} :consumes {:PD1 {}}}
+ :merge {:starts {:MRG {}}}
+ :guarantors {:starts {:GT1 {}}}
+ :next_of_kins {:starts {:NK1 {}}}
+ :comments  {:starts {:NTE {}}}
+ :role {:starts {:ROL {}}}
+ :visit {:starts {:PV1 {}} :consumes {:PV2 {}}}
+ :timing {:starts {:TQ1 {}} :consumes {:TQ2 {:coll true}}}
+
+ :specimen {:starts {:SPM {}} :consumes {:SAC {}} :groups {:observations {:coll true}}}
+
+ :observations {:starts {:OBX {}} :groups {:comments {:coll true}}}
+
+ :order {:starts {:ORC {}}
+         :groups {:timing {:coll true}
+                  :observations {:coll true}
+                  :diagnosis {:coll true}}}
+
+ :order_group {:starts {:order {}}
+               :groups {:observation_request {:coll true}
+                        :observations {:coll true}}}
+
+ :observation_request {:starts {:OBR {}}
+                       :groups {:timing {:coll true}
+                                :observations {:coll true}
+                                :diagnosis {:coll true}
+                                :specimen {:coll true}}}
+
+ :patient_group {:starts {:patient {}}
+                 :groups {:patient {}
+                          :visit {}
+                          :merge {}
+                          :allergies {:coll true}
+                          :insurances {:coll true}
+                          :diagnosis {:coll true}
+                          :next_of_kins {:coll true}
+                          :guarantors {:coll true}
+                          :observations {:coll true}
+                          :order_group {:coll true}}}
+
+ :billed_procedure {:starts {:FT1 {}}}
+ :encounter_procedures {:starts {:visit {}}
+                        :groups {:billed_procedure {:coll true}}}}
