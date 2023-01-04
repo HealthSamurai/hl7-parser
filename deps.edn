@@ -1,3 +1,4 @@
 {:paths ["src" "metadata" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
-        healthsamurai/matcho {:mvn/version "0.3.7"}}}
+        healthsamurai/matcho {:mvn/version "0.3.7"}}
+ :resource-paths ["resources" "metadata"]}
